@@ -1,0 +1,14 @@
+= Reproducer for PosixShim.size returning wrong results
+
+To reproduce run the test PosixTest in a debugger.
+
+Set a breakpoint in PosixTest.test() line 14.
+
+Then set a breakpoint in org.jruby.util.io.OpenFile.remainSize() and see what it returns for the test file which has a size of 156 bytes.
+But PosixShim.size() seems to return non-deterministic results.
+
+Tested on:
+
+- JDK 17.0.1-zulu
+- MacOS 12.1
+- Apple M1 Pro
